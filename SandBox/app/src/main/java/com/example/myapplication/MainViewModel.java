@@ -15,13 +15,13 @@ public class MainViewModel extends AndroidViewModel {
 
     private static final int TOTAL_SECTIONS = 3;
 
-    public List<ExampleGroup> mBaseList = new ArrayList<>();
+    private List<ExampleGroup> mBaseList = new ArrayList<>();
 
-    public MainViewModel(@NonNull Application application) {
+    MainViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public List<ExampleGroup> initList(){
+    List<ExampleGroup> initList(){
         initBaseSectionList();
         initTopItems();
 

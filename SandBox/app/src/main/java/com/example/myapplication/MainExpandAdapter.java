@@ -15,13 +15,11 @@ import java.util.List;
 public class MainExpandAdapter extends ExpandableRecyclerViewAdapter<MainGroupTitleViewHolder, MainGroupItemViewHolder> {
     private Context mContext;
     private ClickListener clickListener;
-    private List<ExampleGroup> groups;
 
     public MainExpandAdapter(Context context, List<ExampleGroup> groups , ClickListener listener){
         super(groups);
         this.mContext = context;
         this.clickListener = listener;
-        this.groups = groups;
     }
 
     @Override
@@ -45,6 +43,11 @@ public class MainExpandAdapter extends ExpandableRecyclerViewAdapter<MainGroupTi
     public void onBindChildViewHolder(MainGroupItemViewHolder holder, int flatPosition, ExpandableGroup group, int childIndex) {
         final ExampleItem item = ((ExampleItem) group.getItems().get(childIndex));
         holder.onBind(item);
+        holder.itemView.setOnClickListener(v -> {
+            if(clickListener != null){
+                clickListener.itemClick(item);
+            }
+        });
     }
 
     interface ClickListener {

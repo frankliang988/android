@@ -1,13 +1,16 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.myapplication.media.VideoTrimmer.VideoTrimmerActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements MainExpandAdapter
     public static final String TAG = MainActivity.class.getCanonicalName();
 
     private MainExpandAdapter mMainExpandAdapter;
-    private RelativeLayout mLayoutContactList;
     private RecyclerView contactsList;
 
     @Override
@@ -31,8 +33,12 @@ public class MainActivity extends AppCompatActivity implements MainExpandAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Home");
+        }
         contactsList = findViewById(R.id.contactsList);
-        mLayoutContactList = findViewById(R.id.layoutContactList);
         initAdapter();
     }
 
@@ -53,30 +59,41 @@ public class MainActivity extends AppCompatActivity implements MainExpandAdapter
                     mMainExpandAdapter.toggleGroup(i);
             }
         }
-
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+//        int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
 
     public void itemClick(@NonNull ExampleItem item) {
-
+        switch (item.category){
+            case ExampleItem.CAT_LAYOUT: {
+                break;
+            }
+            case ExampleItem.CAT_MEDIA: {
+                switch (item.name){
+                    case "Video Trimmer":
+                        Intent intent = new Intent(this, VideoTrimmerActivity.class);
+                        startActivity(intent);
+                }
+                break;
+            }
+        }
     }
 }
