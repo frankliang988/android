@@ -7,8 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class MainViewModel extends AndroidViewModel {
+class MainViewModel extends AndroidViewModel {
     private static final int INFO_SECTION_IDX = 0;
     private static final int MEDIA_SECTION_IDX = 1;
     private static final int LAYOUT_SECTION_IDX = 2;
