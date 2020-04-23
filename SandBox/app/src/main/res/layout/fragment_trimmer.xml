@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/video_player_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:controller_layout_id="@layout/custom_exo_player_view"
+        app:use_controller="false"/>
+
+    <FrameLayout
+        android:id="@+id/root_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <com.example.myapplication.media.VideoTrimmer.TimeLineView
+            android:id="@+id/timeLineView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="invisible" />
+
+        <com.example.myapplication.media.VideoTrimmer.TrimBoundaryContainerView
+            android:id="@+id/trimBox"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/left_index"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="@drawable/bubble_circle_white"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/right_index"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="end|center_vertical"
+            android:background="@drawable/bubble_circle_white"
+            android:visibility="invisible" />
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/playButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_play"
+        android:layout_marginBottom="20dp"
+        android:padding="8dp"
+        android:clickable="false"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/exo_icon_play" />
+
+    <TextView
+        android:id="@+id/video_duration_Tv"
+        android:layout_marginTop="64dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:textColor="@color/white"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textSize="14sp"
+        android:background="@drawable/bg_time_rounded_rect" />
+
+    <TextView
+        android:id="@+id/file_size_Tv"
+        android:layout_marginTop="64dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:textColor="@color/white"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textSize="14sp"
+        android:background="@drawable/bg_time_rounded_rect"/>
+
+</FrameLayout>

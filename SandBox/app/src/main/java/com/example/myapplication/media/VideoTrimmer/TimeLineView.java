@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.LongSparseArray;
 import android.view.View;
 
@@ -57,8 +58,8 @@ public class TimeLineView extends View {
 
     private void getBitmap(final int viewWidth) {
         if(mVideoUri != null){
-            MediaUtil.generateThumbnailBitmapList(MediaUtil.getVideoDuration(getContext(), mVideoUri.getPath()),
-                    mVideoUri, viewWidth, mHeightView);
+            MediaUtil.generateThumbnailBitmapList(MediaUtil.getVideoDuration(getContext(), mVideoUri),
+                    mVideoUri, viewWidth, mHeightView, getContext());
         }
     }
 

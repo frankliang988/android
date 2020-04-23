@@ -35,7 +35,6 @@ class MainViewModel extends AndroidViewModel {
         List<ExampleItem> mediaItems = new ArrayList<>();
         mediaItems.add(new ExampleItem(ExampleItem.CAT_MEDIA, "Location Picker", R.drawable.ic_my_location));
         mediaItems.add(new ExampleItem(ExampleItem.CAT_MEDIA, "Map Generation",R.drawable.ic_map));
-        mediaItems.add(new ExampleItem(ExampleItem.CAT_MEDIA, "Gallery", R.drawable.ic_image));
         mediaItems.add(new ExampleItem(ExampleItem.CAT_MEDIA, "Video Trimmer",R.drawable.ic_video_library));
         ExampleGroup mediaGroup = new ExampleGroup("Media Example",
                 mediaItems, MEDIA_SECTION_IDX, true);
