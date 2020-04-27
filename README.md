@@ -6,3 +6,12 @@ Things such as preventing NPE, puting strings in res file, style definition, and
 
 Current testable feature:
 1) Video trimming: Take a video, if the video is over 5 sec, user can trim the video to desired length, then save the video in "Movies" folder.
+
+Main page:
+![ScreenShot](https://github.com/frankliang988/android/blob/master/screenShots/Screenshot1.jpg)
+
+Press video icon to take video:
+![ScreenShot](https://github.com/frankliang988/android/blob/master/screenShots/Screenshot2.jpg)
+
+Trimming activity:
+![ScreenShot](https://github.com/frankliang988/android/blob/master/screenShots/Screenshot3.jpg)
