@@ -1,5 +1,6 @@
 package com.example.myapplication.media.VideoTrimmer;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -33,11 +34,15 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
 public class TrimmerFragment extends Fragment {
+
+    public interface OnSaveVideo {
+        public void onClick(VideoEntity entity);
+    }
+
     private static final int LEFT = 1;
     private static final int RIGHT = 2;
     private static final int BOX = 3;
@@ -74,6 +79,7 @@ public class TrimmerFragment extends Fragment {
 
     private List<GenerateVideoBitmapListEvent> mEventList;
 
+    private OnSaveVideo listener;
 
     //width of the button
     private float indexWidth = 0;
@@ -116,7 +122,7 @@ public class TrimmerFragment extends Fragment {
         mRightIndex = view.findViewById(R.id.right_index);
         mRightIndex.setClickable(false);
 
-        setListener();
+        setTrimListener();
 
         PlayerView playerView = view.findViewById(R.id.player_view);
         mPlayer = ExoPlayerFactory.newSimpleInstance(requireContext());
@@ -163,6 +169,13 @@ public class TrimmerFragment extends Fragment {
                 }
             }
         });
+
+        TextView tvSave = view.findViewById(R.id.tv_save);
+        tvSave.setOnClickListener(v -> {
+            if(listener != null){
+                listener.onClick(mMedia);
+            }
+        });
     }
 
     @Override
@@ -174,7 +187,13 @@ public class TrimmerFragment extends Fragment {
         super.onDestroyView();
     }
 
-    private void setListener(){
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        listener = (OnSaveVideo) context;
+    }
+
+    private void setTrimListener(){
         View.OnTouchListener listener = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

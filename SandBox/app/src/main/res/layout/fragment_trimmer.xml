@@ -92,4 +92,17 @@
         android:textSize="14sp"
         android:background="@drawable/bg_time_rounded_rect"/>
 
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textSize="20sp"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="4dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_blue_pill"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textColor="@color/white"/>
+
 </FrameLayout>
